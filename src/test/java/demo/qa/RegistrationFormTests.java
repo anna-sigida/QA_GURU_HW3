@@ -5,14 +5,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationFormTests {
-    File avatar = new File("src/test/resources/avatar.png");
+
     @BeforeAll
     static void setUp() {
         Configuration.pageLoadStrategy = "eager";
@@ -24,35 +22,35 @@ public class RegistrationFormTests {
     }
 
     @Test
-    void testFillRegistrationForm() {
+    void FillRegistrationFormTest() {
         $("#firstName").setValue("Sasha");
         $("#lastName").setValue("Ivanova");
         $("#userEmail").setValue("SashaIvanovaTestData@gmail.com");
 
-        $(byText("Female")).click();
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("1111111111");
         $("#dateOfBirthInput").click();
 
         $(".react-datepicker__year-dropdown-container--select").click();
-        $(byText("1990")).click();
+        $(".react-datepicker__year-select").$(byText("1990")).click();
 
         $(".react-datepicker__month-dropdown-container--select").click();
-        $(byText("April")).click();
+        $(".react-datepicker__month-select").$(byText("April")).click();
 
-        $(byText("16")).click();
+        $(".react-datepicker__month").$(byText("16")).click();
 
         $(".subjects-auto-complete__input").click();
         $("#subjectsInput").setValue("Che").pressEnter();
         $("#subjectsInput").setValue("Eng").pressEnter();
 
-        $(byText("Sports")).click();
-        $("#uploadPicture").uploadFile(avatar);
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#uploadPicture").uploadFromClasspath("avatar.png");
 
         $("#currentAddress").setValue("Current Address Value 123");
         $("#state").click();
-        $(byText("Haryana")).click();
+        $("#state").$(byText("Haryana")).click();
         $("#city").click();
-        $(byText("Karnal")).click();
+        $("#city").$(byText("Karnal")).click();
         $("#submit").click();
 
         $(".table").shouldHave(text("Student Name Sasha Ivanova"));
