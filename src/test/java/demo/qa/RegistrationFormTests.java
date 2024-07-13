@@ -18,10 +18,12 @@ public class RegistrationFormTests {
     @BeforeEach
     void login() {
         open("https://demoqa.com/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
     }
 
     @Test
-    void FillRegistrationFormTest() {
+    void fillRegistrationFormTest() {
         $("#firstName").setValue("Sasha");
         $("#lastName").setValue("Ivanova");
         $("#userEmail").setValue("SashaIvanovaTestData@gmail.com");
