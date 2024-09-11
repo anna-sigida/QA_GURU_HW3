@@ -1,4 +1,4 @@
-package demo.qa;
+package demo.qa.archive;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.DragAndDropOptions;
