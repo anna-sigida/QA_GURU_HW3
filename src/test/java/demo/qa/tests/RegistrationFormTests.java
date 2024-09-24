@@ -1,48 +1,46 @@
 package demo.qa.tests;
 
-import com.codeborne.selenide.Configuration;
 import demo.qa.BaseTest;
+import demo.qa.data.TestData;
 import demo.qa.pages.RegistrationPage;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+
 
 public class RegistrationFormTests extends BaseTest {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    TestData testData = new TestData();
 
     @Test
     void fillRegistrationFormTest() {
         registrationPage
                 .openPage()
                 .removeBanner()
-                .setName("Sasha")
-                .setLastName("Ivanova")
-                .setEmail("SashaIvanovaTestData@gmail.com")
-                .setGender("Female")
-                .setNumber("1111111111")
-                .setDate("1990", "April", "16")
-                .setSubject("Chemistry")
-                .setHobbies("Sports")
-                .uploadPicture("avatar.png")
-                .setAddress("Current Address Value 123")
-                .setState("Haryana")
-                .setCity("Karnal")
+                .setName(testData.name)
+                .setLastName(testData.lastName)
+                .setEmail(testData.email)
+                .setGender(testData.gender)
+                .setNumber(testData.number)
+                .setDate(testData.year, testData.month, testData.day)
+                .setSubject(testData.subject)
+                .setHobbies(testData.hobby)
+                .uploadPicture(testData.picture)
+                .setAddress(testData.address)
+                .setState(testData.state)
+                .setCity(testData.city)
                 .submit()
 
-                .checkResults("Student Name", "Sasha Ivanova")
-                .checkResults("Student Email", "SashaIvanovaTestData@gmail.com")
-                .checkResults("Gender", "Female")
-                .checkResults("Mobile", "1111111111")
-                .checkResults("Date of Birth", "16 April,1990")
-                .checkResults("Subjects", "Chemistry")
-                .checkResults("Hobbies", "Sports")
-                .checkResults("Picture", "avatar.png")
-                .checkResults("Address", "Current Address Value 123")
-                .checkResults("State and City", "Haryana Karnal");
+                .checkResults("Student Name", testData.name + " " + testData.lastName)
+                .checkResults("Student Email", testData.email)
+                .checkResults("Gender", testData.gender)
+                .checkResults("Mobile", testData.number)
+                .checkResults("Date of Birth", testData.day + " " + testData.month + "," + testData.year)
+                .checkResults("Subjects", testData.subject)
+                .checkResults("Hobbies", testData.hobby)
+                .checkResults("Picture", testData.picture)
+                .checkResults("Address", testData.address)
+                .checkResults("State and City", testData.state + " " + testData.city);
     }
 
     @Test
@@ -50,15 +48,15 @@ public class RegistrationFormTests extends BaseTest {
         registrationPage
                 .openPage()
                 .removeBanner()
-                .setName("Sasha")
-                .setLastName("Ivanova")
-                .setGender("Female")
-                .setNumber("1111111111")
+                .setName(testData.name)
+                .setLastName(testData.lastName)
+                .setGender(testData.gender)
+                .setNumber(testData.number)
                 .submit()
 
-                .checkResults("Student Name", "Sasha Ivanova")
-                .checkResults("Gender", "Female")
-                .checkResults("Mobile", "1111111111");
+                .checkResults("Student Name", testData.name + " " + testData.lastName)
+                .checkResults("Gender", testData.gender)
+                .checkResults("Mobile", testData.number);
     }
 
     @Test
@@ -68,10 +66,12 @@ public class RegistrationFormTests extends BaseTest {
                 .removeBanner()
                 .setName("")
                 .setLastName("")
-                .setGender("Female")
+                .setGender(testData.gender)
                 .setNumber("")
                 .submit()
 
                 .checkErrors();
     }
+
+
 }
