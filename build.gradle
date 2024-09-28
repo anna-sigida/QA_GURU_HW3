@@ -8,12 +8,23 @@ version = '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
 
 dependencies {
     testImplementation (
             'org.junit.jupiter:junit-jupiter:5.10.2',
             'com.codeborne:selenide:7.3.3',
             'com.github.javafaker:javafaker:1.0.2',
+            'org.assertj:assertj-core:3.26.3',
+            'com.codeborne:pdf-test:1.5.0',
+            'com.codeborne:xls-test:1.4.3',
+            'com.opencsv:opencsv:5.8',
     )
 }
 
