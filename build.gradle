@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'io.freefair.lombok' version '8.10'
 }
 
 group = 'org.example'
@@ -25,6 +26,8 @@ dependencies {
             'com.codeborne:pdf-test:1.5.0',
             'com.codeborne:xls-test:1.4.3',
             'com.opencsv:opencsv:5.8',
+            'com.fasterxml.jackson.core:jackson-databind:2.18.0',
+            'org.projectlombok:lombok:1.18.34'
     )
 }
 
