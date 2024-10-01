@@ -29,11 +29,27 @@ dependencies {
             'com.opencsv:opencsv:5.8',
             'com.fasterxml.jackson.core:jackson-databind:2.18.0',
             'org.projectlombok:lombok:1.18.34',
-            'io.qameta.allure:allure-selenide:2.28.1'
+            'io.qameta.allure:allure-selenide:2.28.1',
     )
 }
 
 test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+task demoqa(type: Test) {
+    useJUnitPlatform {
+        includeTags('demoqa')
+    }
 }

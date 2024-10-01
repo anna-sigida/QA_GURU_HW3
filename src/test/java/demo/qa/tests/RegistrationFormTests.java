@@ -4,15 +4,18 @@ import demo.qa.BaseTest;
 import demo.qa.data.TestData;
 import demo.qa.pages.RegistrationPage;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-
+@Tag("demoqa")
 public class RegistrationFormTests extends BaseTest {
 
     RegistrationPage registrationPage = new RegistrationPage();
     TestData testData = new TestData();
 
     @Test
+    @DisplayName("Заполнение формы регистрации")
     void fillRegistrationFormTest() {
         registrationPage
                 .openPage()
@@ -44,6 +47,7 @@ public class RegistrationFormTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Заполнение только обязательных полей")
     void fillRequiredOnlyFormTest() {
         registrationPage
                 .openPage()
@@ -60,7 +64,8 @@ public class RegistrationFormTests extends BaseTest {
     }
 
     @Test
-    void EmptyNameAndNumberFormTest() {
+    @DisplayName("Отправка пустой формы регистрации")
+    void emptyNameAndNumberFormTest() {
         registrationPage
                 .openPage()
                 .removeBanner()
@@ -72,6 +77,4 @@ public class RegistrationFormTests extends BaseTest {
 
                 .checkErrors();
     }
-
-
 }
