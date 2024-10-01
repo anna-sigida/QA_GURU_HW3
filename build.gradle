@@ -11,15 +11,16 @@ repositories {
     mavenCentral()
 }
 
+
 allure {
     report {
-        version.set(allureVersion)
+        version.set('2.28.1')
     }
     adapter {
         aspectjWeaver.set(true)
         frameworks {
             junit5 {
-                adapterVersion.set(allureVersion)
+                adapterVersion.set('2.28.1')
             }
         }
     }
