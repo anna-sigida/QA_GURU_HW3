@@ -49,12 +49,9 @@ dependencies {
     )
 }
 
-test {
-    useJUnitPlatform()
-    systemProperties(System.getProperties())
-}
 
 tasks.withType(Test) {
+    useJUnitPlatform()
     systemProperties(System.getProperties())
     testLogging {
         lifecycle {

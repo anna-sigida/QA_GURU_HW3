@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @Tag("demoqa")
-public class RegistrationFormTests extends BaseTest {
+public class RegistrationFormTests {
 
     RegistrationPage registrationPage = new RegistrationPage();
     TestData testData = new TestData();
@@ -76,5 +76,12 @@ public class RegistrationFormTests extends BaseTest {
                 .submit()
 
                 .checkErrors();
+    }
+
+    @Test
+    void aaaabbb(){
+        System.setProperty("browser", "opera");
+        String br = System.getProperty("browser");
+        System.out.println(br);
     }
 }
