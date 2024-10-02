@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @Tag("demoqa")
-public class RegistrationFormTests {
+public class RegistrationFormTests extends BaseTest {
 
     RegistrationPage registrationPage = new RegistrationPage();
     TestData testData = new TestData();
