@@ -77,11 +77,4 @@ public class RegistrationFormTests {
 
                 .checkErrors();
     }
-
-    @Test
-    void aaaabbb(){
-        System.setProperty("browser", "opera");
-        String br = System.getProperty("browser");
-        System.out.println(br);
-    }
 }
