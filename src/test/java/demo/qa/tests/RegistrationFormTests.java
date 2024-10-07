@@ -1,6 +1,5 @@
 package demo.qa.tests;
 
-import demo.qa.BaseTest;
 import demo.qa.data.TestData;
 import demo.qa.pages.RegistrationPage;
 
